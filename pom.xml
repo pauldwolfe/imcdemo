@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hartwig</groupId>
-    <artifactId>pipeline5</artifactId>
+    <groupId>imc.demo</groupId>
+    <artifactId>gcp-spark</artifactId>
     <version>local-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -29,17 +29,7 @@
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_2.11</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.cloud</groupId>
-            <artifactId>google-cloud-nio</artifactId>
-            <version>${google-cloud-nio.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.apis</groupId>
-            <artifactId>google-api-services-dataproc</artifactId>
-            <version>${google-dataproc-api.version}</version>
+            <version>${spark.version}</version>
         </dependency>
 
     </dependencies>
@@ -81,20 +71,7 @@
                                     <pattern>com</pattern>
                                     <shadedPattern>repackaged.dataproc.com</shadedPattern>
                                     <includes>
-                                        <include>com.fasterxml.**</include>
-                                        <include>com.google.api.**</include>
-                                        <include>com.google.protobuf.**</include>
-                                        <include>com.google.cloud.hadoop.gcsio.**</include>
-                                        <include>com.google.cloud.hadoop.util.**</include>
                                         <include>com.google.common.**</include>
-                                    </includes>
-                                </relocation>
-                                <relocation>
-                                    <pattern>org</pattern>
-                                    <shadedPattern>repackaged.dataproc.org</shadedPattern>
-                                    <includes>
-                                        <include>org.apache.commons.codec.**</include>
-                                        <include>org.apache.http.**</include>
                                     </includes>
                                 </relocation>
                             </relocations>
@@ -104,16 +81,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>oss-sonatype</id>
-            <name>oss-sonatype</name>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
 </project>
